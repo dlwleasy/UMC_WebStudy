@@ -1,45 +1,22 @@
-import React, { useState } from 'react';
-import type { TTodo } from '../types/todo';
+import React, { useContext } from 'react';
 import TodoForm from './todoform';
 import TodoList from './todolist';
+import { TodoContext } from '../context/TodoContext';
 
 const Todo = (): React.ReactElement => {
-  const [todos, setTodos] = useState<TTodo[]>([
-    
-  ]);
-  const [doneTodos, setDoneTodos] = useState<TTodo[]>([
-   
-  ]);
-  const [input, setInput] = useState<string>('');
-
-  // 할 일 추가
-  const addTodo = () => {
-    if (!input.trim()) return;
-    const newTodo: TTodo = { id: Date.now(), text: input };
-    setTodos([...todos, newTodo]);
-    setInput('');
-  };
-
-  // 완료 처리
-  const completeTodo = (id: number) => {
-    const todoToMove = todos.find(t => t.id === id);
-    if (!todoToMove) return;
-    setTodos(todos.filter(t => t.id !== id));
-    setDoneTodos([...doneTodos, todoToMove]);
-  };
-
-  // 삭제 처리
-  const deleteTodo = (id: number) => {
-    setDoneTodos(doneTodos.filter(t => t.id !== id));
-  };
-
+  const context = useContext(TodoContext)
   return (
-    <main>
-      <div className="main_box">
+    <main className={context?.theme}>
+      <nav className='nav_container'>
+        <button className = {context?.theme} onClick={context?.ToggleTheme}>
+          테마 변경
+        </button>
+      </nav>
+      <div className={context?.theme}>
         <p><strong>HAN TODO</strong></p>
 
         <div className="main_input--box">
-          <TodoForm input={input} setInput={setInput} addTodo={addTodo}/>
+          <TodoForm input={context.input} setInput={context.setInput} addTodo={context.addTodo}/>
         </div>
         <div className="main_todo">
           <p><strong>할 일</strong></p>
@@ -49,18 +26,18 @@ const Todo = (): React.ReactElement => {
         <div className="main_container">
           <div className="box left">
             <TodoList
-              todos = {todos}
+              todos = {context.todos}
               buttonLabel='완료'
               buttonColor='#28a745'
-              onClick={completeTodo}/>
+              onClick={context.completeTodo}/>
           </div>
 
           <div className="box right">
             <TodoList
-              todos = {doneTodos}
+              todos = {context.doneTodos}
               buttonLabel='삭제'
               buttonColor='#28a745'
-              onClick={deleteTodo}/>
+              onClick={context.deleteTodo}/>
           </div>
         </div>
       </div>

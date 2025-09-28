@@ -1,10 +1,9 @@
- .main_box {
-        background-color: rgb(247, 247, 247);
-        border-radius: 10px;
-        display: inline-flex;
-        flex-direction: column;
+div.light p {
+        text-align: center;
+
     }
-.main_box p {
+
+div.dark p {
         text-align: center;
 
     }

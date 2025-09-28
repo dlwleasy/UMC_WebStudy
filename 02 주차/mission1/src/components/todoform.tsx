@@ -2,8 +2,8 @@ import type React from "react";
 
 interface TodoFormProps {
     input: string;
-    setInput: (input: string) => void;
-    addTodo: (e: React.MouseEvent<HTMLButtonElement>) => void;
+    setInput: (input: string) => void | undefined;
+    addTodo: () => void;
 }
 
 
