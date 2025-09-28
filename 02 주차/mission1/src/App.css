@@ -1,0 +1,51 @@
+div.light p {
+        text-align: center;
+
+    }
+
+div.dark p {
+        text-align: center;
+
+    }
+.main_todo {
+        display: flex;
+        justify-content: space-evenly;
+    }
+.main_container {
+        display: grid;
+        grid-template-columns: 113px 113px;
+        gap: 3px;
+        align-items: center;
+    }
+.main_TODO {
+        width: 110px;
+        height: 30px;
+        border-radius: 10px;
+        background-color: beige;
+    }
+.box {
+        text-align: center;
+    }
+.left_button {
+        background-color: green;
+        border: none;
+    }
+.Delet_button {
+        background-color: red;
+    }
+.render-container__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.main_input--box {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+button {
+    border: none;
+    outline: none;
+    border-radius: 20px;
+}
