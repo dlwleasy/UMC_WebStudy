@@ -16,7 +16,7 @@ const TodoForm = ({input, setInput, addTodo}: TodoFormProps) : React.ReactElemen
             onChange={e => setInput(e.target.value)}
             placeholder="할 일을 입력하세요"
           />
-          <button onClick={addTodo}>추가</button>
+          <button onClick={addTodo} style={{backgroundColor: '#742b29ad'}}>추가</button>
         </>
     );
 }
